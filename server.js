@@ -157,11 +157,16 @@ async function getAnimal(text, callback) {
         animal = result.parameters.fields.animal.stringValue;
         const url = `https://78534325.ngrok.io/${result.parameters.fields.animal.stringValue.replace(/ /g, "_")}`;
         httpRequest({ url, json: true }, (error, { body }) => {
-            console.log(body)
-            name = body.drawingOne.word;
-            indices = [body.indices[0], body.indices[1], body.indices[2]]
-            drawing = [body.drawingOne.drawing, body.drawingTwo.drawing, body.drawingThree.drawing]
-            callback(result, drawing, animal);
+            try {
+                console.log(body)
+                name = body.drawingOne.word;
+                indices = [body.indices[0], body.indices[1], body.indices[2]]
+                drawing = [body.drawingOne.drawing, body.drawingTwo.drawing, body.drawingThree.drawing]
+                callback(result, drawing, animal);
+            } catch(err) {
+
+            }
+       
         })
 
         try {
