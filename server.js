@@ -4,7 +4,7 @@ var express = require('express')
 var app = express();
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
-var serveStatic = require('serve-static');
+//var serveStatic = require('serve-static');
 
 
 const fs = require('fs');
@@ -15,7 +15,7 @@ const speechClient = new speech.SpeechClient();
 
 app.set('port', (process.env.PORT || 5000));
 
-app.use(serveStatic(__dirname + "/public"));
+//app.use(serveStatic(__dirname + "/public"));
 
 io.on('connection', function (socket) {
     console.log('a user connected');
