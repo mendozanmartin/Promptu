@@ -60,13 +60,13 @@ var alternative = "";
 async function speechToText(blob, callback) {
 
     const encoding = 'MP3';
-    const sampleRateHertz = 48000;
+   // const sampleRateHertz = 48000;
     const languageCode = 'en-US';
     const filename = blob;
 
     const config = {
         encoding: encoding,
-        sampleRateHertz: sampleRateHertz,
+     //   sampleRateHertz: sampleRateHertz,
         languageCode: languageCode,
         audioChannelCount: 2
     };
