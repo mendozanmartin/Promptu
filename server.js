@@ -4,6 +4,8 @@ var express = require('express')
 var app = express();
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
+var httpRequest = require('request')
+var drawing = [];
 //var serveStatic = require('serve-static');
 
 
@@ -25,10 +27,12 @@ io.on('connection', function (socket) {
     });
 
     socket.on('sendVideo', (data) => {
-        speechToText(data.blob, (result)=> {
+        speechToText(data.blob, (result, drawingArray)=> {
            console.log(result.queryText)
+           console.log(drawingArray)
             socket.emit('result', {
-                transcription: result.queryText
+                transcription: result.queryText,
+                drawing: drawingArray
             })
         }).catch(console.error)
     });
@@ -115,19 +119,27 @@ async function getAnimal(text, callback) {
     console.log('Detected intent');
 
     const result = responses[0].queryResult;
+
     console.log(`  Query: ${result.queryText}`);
     console.log(`  Response: ${result.fulfillmentText}`);
     if (result.intent) {
-        console.log(`  Intent: ${result.intent.displayName}`);
+        console.log(result.parameters.fields.animal.stringValue)
+        const url = `https://2ab2ad79.ngrok.io/${result.parameters.fields.animal.stringValue.replace(/ /g,"_")}`;
+        httpRequest({url, json: true}, (error, {body})=> {
+           // console.log(body.drawing);
+            drawing = body.drawing;
+            callback(result, drawing);
+        })
         try {
+            console.log("  Animal: " + result.parameters.fields.animal.stringValue);
 
         } catch(err) {
-            console.log("  Animal: " + result.parameters.fields.animal.stringValue);
+
         }
     } else {
         console.log(`  No intent matched.`);
     }
-    callback(result);
+
 }
 
 

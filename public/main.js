@@ -85,8 +85,8 @@ function createDownloadLink(blob) {
 
   socket.on('result', (data)=> {
     speechTranscription.innerHTML = data.transcription;
-
-    console.log(data.transcription)
+    console.log(data.drawing);
+    drawSomething(data.drawing);
 
   })
 }
