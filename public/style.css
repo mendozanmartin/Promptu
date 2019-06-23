@@ -1,0 +1,10 @@
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #d5eaf8
+}
+
+.imageContainer {
+    background-color: white;
+    height: 50vh;
+    margin: 3vh;
+}

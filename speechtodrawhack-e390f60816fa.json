@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "speechtodrawhack",
+  "private_key_id": "e390f60816fa41679427159ec3d52129d2909082",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCrZWeAqhwChxPm\nDSep1ztPzhbdnQ/YuJY+6UM4RbzlHu999HfVQY2oXmsypJcASAmpleN6dKg209Hg\ndpFtYPFetwINMWrIVgaTs73OdGzKpUf2Ty2+/RkOMgayhro9epHmkDyGWn6nlF4r\nq57GTaPv87eJjSMDsK9Pr7gZwY1iTVOpHFdI8iULVH0/492vJkgpFaFs9gEM/X3m\nGpKyLdiSEjzlA46nSHeugMRqdYg8eW6366+eKrVm4mImovjTLg2/Y7qMpm4piDMB\nIYKywoG04+2Mb9rfavlR0dMe5ZtS9EPmRkTqz7EPWiPg6+E+DvPNTjjLHcYNbrBk\nFyEfFOrbAgMBAAECggEACxBYLpOMjFM44xxNR6bnor6sdjDJ0ZUUycnX93109Jtb\nHVfXFnKNWOWDaPj78F42FXbiAMkgBK4GucUdnSBpZFJO9RgQCw+WjBlJstaMIUar\nDwjMbKw83lA3Y3XT9tz/JxF/frK/w0SOEaaZ8LYZU4d5fQ0ZygaxQmUW7r6ySDqX\nadIC+LvjU0yN1OzJzKnuLjLY6DznbQy4S4m/9JYLSlDHRpdv2H/ELXAJEYfdAwES\naldHGQAObXDCySi721wWV/nHPzq4Kx1dqiy53lcM3AkgyNAJ0Lu2NsJLLUKVZRnf\nobkiJ4mTuqnhGuZYwqBmV1eVViG542GXGnQlyc/QkQKBgQDqTM8BVa//UafjCqNl\nmeMOK/Z3seitwbeCsoxmhDFbnV9LCC7wNNl6hr3WuAMNkBmoH8YDDHwOh8vgu5d4\ncAxwip057VosGU1iU+lLMK963Z4XpCGAorjnIZHaoqWx6ZL81rGKcEApXhLuPLxA\nyfv+ZOAR3rDu5G6JY8kM9qzRqwKBgQC7RSkSIXAxsg6QnjRK2j+iqxhCFPxXcSVI\njTPbftyisbT/JzAmB7ZSrZKrR7Tb/HU7grbB8Y5AZJkrZ2H5OdWodS8dpyLnVZNU\nI3fvMO5vQDP3AvkFgKZlLwoG+ZYiIaAqrKgR2V7UzTqEDJqiXHbeEMgnfEK45a5m\negL3sF97kQKBgDWSlG6AsjpV6GZgg1Xy5tjRsoxR0JsSRSyMONAj/8kr5aMZXuor\nm2KJtpSHBKOwRD2N7k+6Jg+Ie1SKcCroq997wlGBdPHKY0hNWXWIz0bvr3tGWya3\njkHDCj+MmwhgGOzZBkVaP0F2MivpFT5XMNhNJnLPkXM+JgwiFdFyAbf7AoGBALp5\nzMLkDx89KamyD2o110X4zygGU5wS68hJ6sh3k+ZhxFSKxjQoW9IKStFJjvu7cVU3\n/Ro0mazfP3Jr+LA+edXMEoWZh3UJzrHqu6Oves3HBbfC+wsSpx58b6SwZWJJT38O\n/DEB3Z9TWSBimJxyLF9GILjI0HvjIf2jI09XDk0xAoGAVfs6iruU64GsTL3N0gln\nh/fwfv4MKARvINCDl0HGTsN61lOJgL/YCI/ZhxLpJZtd6/MNmt0xTXY/saQCN7xj\noI8VBUeLXjUtEk/SuE+Xr1iQ4egzmHyExi+36hY7lK3ssYqw2n0e24RabtJb2tRe\ni6arSFx6V7fLR6ScUKhrPNQ=\n-----END PRIVATE KEY-----\n",
+  "client_email": "dialogflow-jqqitj@speechtodrawhack.iam.gserviceaccount.com",
+  "client_id": "102363913662173111048",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dialogflow-jqqitj%40speechtodrawhack.iam.gserviceaccount.com"
+}

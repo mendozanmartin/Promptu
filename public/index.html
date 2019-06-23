@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Speak out to draw attention to social issues</title>
+  </head>
+  <body class = "text-center">
+    <h1 class = "m-3">Speak Out!</h1>
+    <div class = "column">
+      <button class = "btn btn-info" id = "recordButton">Record your voice</button>
+      <button class = "btn btn-primary"  id = "pauseButton">Pause</button>
+      <button class = "btn btn-danger"  id = "stopButton">Stop and Send</button>
+    </div>
+    <div class = "imageContainer">
+      <ol id="recordingsList"></ol>
+
+    </div>
+
+    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

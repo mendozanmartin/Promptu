@@ -1,0 +1,30 @@
+{
+  "name": "speechtodrawinghack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mendozanmartin/SpeechToDrawingHack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mendozanmartin/SpeechToDrawingHack/issues"
+  },
+  "homepage": "https://github.com/mendozanmartin/SpeechToDrawingHack#readme",
+  "dependencies": {
+    "@google-cloud/speech": "^3.2.1",
+    "dialogflow": "^0.10.1",
+    "express": "^4.17.1",
+    "http-server": "^0.11.1",
+    "node-record-lpcm16": "^0.3.1",
+    "nodemon": "^1.19.1",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
