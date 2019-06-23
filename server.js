@@ -57,7 +57,7 @@ io.on('connection', function (socket) {
             console.log(indices[2])
 
         }
-        const url = `https://c52d94aa.ngrok.io/senddata/${name.replace(/ /g, "_")}?id=${numToSend}`
+        const url = `https://78534325.ngrok.io/senddata/${name.replace(/ /g, "_")}?id=${numToSend}`
         httpRequest({ url, json: true }, (error, { body }) => {
             console.log(body)
         })
@@ -155,7 +155,7 @@ async function getAnimal(text, callback) {
     console.log(`  Response: ${result.fulfillmentText}`);
     if (result.intent) {
         animal = result.parameters.fields.animal.stringValue;
-        const url = `https://c52d94aa.ngrok.io/${result.parameters.fields.animal.stringValue.replace(/ /g, "_")}`;
+        const url = `https://78534325.ngrok.io/${result.parameters.fields.animal.stringValue.replace(/ /g, "_")}`;
         httpRequest({ url, json: true }, (error, { body }) => {
             console.log(body)
             name = body.drawingOne.word;
