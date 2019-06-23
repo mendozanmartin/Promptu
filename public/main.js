@@ -1,37 +1,15 @@
-
-// function record() {
-//   navigator.mediaDevices.getUserMedia({ audio: true, video: false })
-//   .then(handleSuccess);
-// }
-
-// var handleSuccess = function(stream) {
-//   var context = new AudioContext();
-//   var source = context.createMediaStreamSource(stream);
-//   var processor = context.createScriptProcessor(1024, 1, 1);
-
-//   source.connect(processor);
-//   processor.connect(context.destination);
-
-//   processor.onaudioprocess = function(e) {
-//     // Do something with the data, i.e Convert this to WAV
-//   // console.log(e.inputBuffer);
-//   };
-//   console.log(stream)
-// };
-
-// function stop() {
-//   navigator.mediaDevices.getUserMedia({ audio: true, video: false })
-//   .then(handleSuccess);
-// }
-
 //webkitURL is deprecated but nevertheless 
 URL = window.URL || window.webkitURL;
-var gumStream;
-//stream from getUserMedia() 
-var rec;
-//Recorder.js object 
+var gumStream; //stream from getUserMedia() 
+var rec; //Recorder.js object
 var input;
-//MediaStreamAudioSourceNode we'll be recording 
+
+var constraints = {
+  audio: true,
+  video: false
+}
+/* Disable the record button until we get a success or fail from getUserMedia() */
+var socket = io();
 
 //new audio context to help us record 
 var recordButton = document.getElementById("recordButton");
@@ -40,6 +18,10 @@ var pauseButton = document.getElementById("pauseButton");
 //add events to those 3 buttons 
 recordButton.addEventListener("click", startRecording);
 stopButton.addEventListener("click", stopRecording);
+
+recordButton.disabled = false;
+stopButton.disabled = true;
+pauseButton.disabled = true
 
 function startRecording() {
   // shim for AudioContext when it's not avb. 
@@ -65,25 +47,6 @@ function startRecording() {
     console.log("unable to record")
   });
 }
-/* Simple constraints object, for more advanced audio features see
-
-https://addpipe.com/blog/audio-constraints-getusermedia/ */
-
-var constraints = {
-  audio: true,
-  video: false
-}
-/* Disable the record button until we get a success or fail from getUserMedia() */
-
-recordButton.disabled = false;
-stopButton.disabled = true;
-pauseButton.disabled = true
-
-/* We're using the standard promise based getUserMedia()
-
-https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia */
-
-
 
 function stopRecording() {
   console.log("stopButton clicked");
@@ -97,6 +60,7 @@ function stopRecording() {
   rec.stop(); //stop microphone access 
   gumStream.getAudioTracks()[0].stop();
   //create the wav blob and pass it on to createDownloadLink 
+
   rec.exportWAV(createDownloadLink);
 }
 
@@ -113,8 +77,16 @@ function createDownloadLink(blob) {
   link.download = new Date().toISOString() + '.wav';
   link.innerHTML = link.download;
   //add the new audio and a elements to the li element 
-  li.appendChild(au);
-  li.appendChild(link);
+  
   //add the li element to the ordered list 
-  recordingsList.appendChild(li);
+  socket.emit('sendVideo', {
+    blob: blob
+  });
+
+  socket.on('result', (data)=> {
+  //  li.appendChild(data.transcription);
+  //   speechTranscription.appendChild(li);
+    console.log(data.transcription)
+
+  })
 }
