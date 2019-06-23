@@ -11,7 +11,6 @@ const fs = require('fs');
 const speech = require('@google-cloud/speech');
 const dialogflow = require('dialogflow');
 const uuid = require('uuid');
-const dialogflowKey = require('./speechtodrawhack-e390f60816fa.json')
 const speechClient = new speech.SpeechClient();
 
 app.set('port', (process.env.PORT || 5000));
