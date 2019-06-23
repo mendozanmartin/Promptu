@@ -62,28 +62,28 @@ function pickPicture(number) {
             animalLinks.innerHTML = factsData[0].help;
             break;
         case "elephant":
+            animalFacts.innerHTML = factsData[1].stats[0]; 
+            animalLinks.innerHTML = factsData[1].help;
+
+            break;
+        case "lion":
             animalFacts.innerHTML = factsData[2].stats[0]; 
             animalLinks.innerHTML = factsData[2].help;
 
             break;
-        case "lion":
-            animalFacts.innerHTML = factsData[3].stats[0]; 
+        case "shark":
+            animalFacts.innerHTML = factsData[3].stats[0];
             animalLinks.innerHTML = factsData[3].help;
 
             break;
-        case "shark":
+        case "sea turtle":
             animalFacts.innerHTML = factsData[4].stats[0];
             animalLinks.innerHTML = factsData[4].help;
 
             break;
-        case "sea turtle":
+        case "rhinoceros":
             animalFacts.innerHTML = factsData[5].stats[0];
             animalLinks.innerHTML = factsData[5].help;
-
-            break;
-        case "rhinoceros":
-            animalFacts.innerHTML = factsData[6].stats[0];
-            animalLinks.innerHTML = factsData[6].help;
 
             break;
     }
