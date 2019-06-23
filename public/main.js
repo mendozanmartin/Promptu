@@ -12,23 +12,20 @@ var constraints = {
 var socket = io();
 
 //new audio context to help us record 
-var recordButton = document.getElementById("recordButton");
-var stopButton = document.getElementById("stopButton");
-var pauseButton = document.getElementById("pauseButton");
+var recordButton = document.getElementById("mic-ready");
+var micOn = document.getElementById("mic-on")
 //add events to those 3 buttons 
 recordButton.addEventListener("click", startRecording);
-stopButton.addEventListener("click", stopRecording);
+micOn.addEventListener("click", stopRecording);
 
-recordButton.disabled = false;
-stopButton.disabled = true;
-pauseButton.disabled = true
 
 function startRecording() {
   // shim for AudioContext when it's not avb. 
+  micOn.style.display = 'grid';
+  recordButton.style.display = 'none'
   var AudioContext = window.AudioContext || window.webkitAudioContext;
   var audioContext = new AudioContext;
   console.log("recordButton clicked");
-  stopButton.disabled = false;
   navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
     console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
     /* assign to gumStream for later use */
@@ -51,11 +48,8 @@ function startRecording() {
 function stopRecording() {
   console.log("stopButton clicked");
   //disable the stop button, enable the record too allow for new recordings 
-  stopButton.disabled = true;
   recordButton.disabled = false;
-  pauseButton.disabled = true;
   //reset button just in case the recording is stopped while paused 
-  pauseButton.innerHTML = "Pause";
   //tell the recorder to stop the recording 
   rec.stop(); //stop microphone access 
   gumStream.getAudioTracks()[0].stop();

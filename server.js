@@ -6,6 +6,9 @@ var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 var httpRequest = require('request')
 var drawing = [];
+var name = ""
+var indices = [];
+
 //var serveStatic = require('serve-static');
 
 
@@ -27,15 +30,36 @@ io.on('connection', function (socket) {
     });
 
     socket.on('sendVideo', (data) => {
-        speechToText(data.blob, (result, drawingArray)=> {
-           console.log(result.queryText)
-           console.log(drawingArray)
+        speechToText(data.blob, (result, drawingArray) => {
+            console.log(result.queryText)
+            console.log(drawingArray)
             socket.emit('result', {
                 transcription: result.queryText,
                 drawing: drawingArray
             })
         }).catch(console.error)
     });
+
+    socket.on('sendDrawing', (data) => {
+        var numToSend;
+        console.log(data.number)
+        if (data.number == 0) {
+            console.log(indices[0])
+            numToSend = indices[0]
+        } else if (data.number == 1) {
+            numToSend = indices[1]
+            console.log(indices[1])
+
+        } else {
+            numToSend = indices[2]
+            console.log(indices[2])
+
+        }
+        const url = 'https://c52d94aa.ngrok.io/senddata/' + name + '?id=' + numToSend
+        httpRequest({ url, json: true }, (error, { body }) => {
+            console.log(body)
+        })
+    })
     //end of socket connection
 });
 
@@ -58,15 +82,18 @@ var alternative = "";
 
 
 async function speechToText(blob, callback) {
+    var drawing = [];
+    var name = ""
+    var indices = [];
 
     const encoding = 'MP3';
-   // const sampleRateHertz = 48000;
+    // const sampleRateHertz = 48000;
     const languageCode = 'en-US';
     const filename = blob;
 
     const config = {
         encoding: encoding,
-     //   sampleRateHertz: sampleRateHertz,
+        //   sampleRateHertz: sampleRateHertz,
         languageCode: languageCode,
         audioChannelCount: 2
     };
@@ -124,16 +151,19 @@ async function getAnimal(text, callback) {
     console.log(`  Response: ${result.fulfillmentText}`);
     if (result.intent) {
         console.log(result.parameters.fields.animal.stringValue)
-        const url = `https://2ab2ad79.ngrok.io/${result.parameters.fields.animal.stringValue.replace(/ /g,"_")}`;
-        httpRequest({url, json: true}, (error, {body})=> {
-           // console.log(body.drawing);
-            drawing = body.drawing;
+        const url = `https://c52d94aa.ngrok.io/${result.parameters.fields.animal.stringValue.replace(/ /g, "_")}`;
+        httpRequest({ url, json: true }, (error, { body }) => {
+            console.log(body)
+            name = body.drawingOne.word;
+            indices = [body.indices[0], body.indices[1], body.indices[2]]
+            drawing = [body.drawingOne.drawing, body.drawingTwo.drawing, body.drawingThree.drawing]
             callback(result, drawing);
         })
+
         try {
             console.log("  Animal: " + result.parameters.fields.animal.stringValue);
 
-        } catch(err) {
+        } catch (err) {
 
         }
     } else {
@@ -141,5 +171,3 @@ async function getAnimal(text, callback) {
     }
 
 }
-
-

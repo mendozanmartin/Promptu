@@ -1,27 +1,78 @@
 <!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Speak out to draw attention to social issues</title>
+</head>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Speak out to draw attention to social issues</title>
-  </head>
-  <body class = "text-center">
-    <h1 class = "m-3">Speak Out!</h1>
-    <div class = "column">
-      <button class = "btn btn-info" id = "recordButton">Record your voice</button>
+
+<!-- <button class = "btn btn-info" id = "recordButton">Record your voice</button>
       <button class = "btn btn-primary"  id = "pauseButton">Pause</button>
       <button class = "btn btn-danger"  id = "stopButton">Stop and Send</button>
-    </div>
       <h2 id="speechTranscription"></h2>
 
+      <div class = " firstPicture" onclick="pickPicture(0)"></div>
+      <div class = " secondPicture" onclick="pickPicture(1)"></div>
+      <div class = " thirdPicture" onclick="pickPicture(2)"></div>
+    <div id = "myCanvas">
+    </div> -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
-    <script src="main.js"></script>
-    <script src="sketch.js"></script>
-  </body>
+<div id="site-container">
+
+  <div id="call-to-action">
+    <div class="small-title" id="declare">What's your...</div>
+    <div class="large-title" id="question">Favourite Animal?</div>
+  </div>
+  <!--Mic Is Ready To Be Pressed - WIREFRAME SCREEN 1-->
+  <div id="mic-ready" class="medium-title"> <img src="img/Ready.png"> Tap To Start
+  </div>
+  <!--Mic has been pressed and is listening - WIREFRAME SCREEN 2-->
+  <div id="mic-on" class="medium-title"><img src="img/listening.png"> Listening...<br><p style="font-size: 40px;">Press again when done</p>
+  </div>
+  <!--Mic has heard a prompt and asks user to pick an image - WIREFRAME SCREEN 3-->
+  <div id="drawing-pick">
+    <!--DRAW CANVAS HERE-->
+  </div>
+
+  <div id="animal-text" class="large-title">Sea Turtles
+    <!--ANIMAL NAME GOES HERE-->
+  </div>
+
+  <div id="redo-icon" class="body-text"> <img src="img/redo.png">
+    <div class="padded-text">Try Again</div>
+  </div>
+  <div id="reload-icon" class="body-text"> <img src="img/reload.png">
+    <div class="padded-text">Refresh</div>
+  </div>
+
+  <!--User has selected drawing - WIREFRAME SCREEN 4 -->
+
+  <div id="display">
+    <!--DISPLAY CANVAS FROM SERVER HERE-->
+  </div>
+
+  <div id="info" class="body-text">Did you know...</div>
+  <!--DISPLAY STRING FROM FACT HERE -->
+  <div id="animal-fact" class="medium-title">Sea Turtle birth rates are affected by climate change.</div>
+
+
+
+  <!-- Below is Hashtag - We may choose to remove it -->
+  <div id="hashtag" class="small-title">#ImpactfulPrompts</div>
+
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+<script src="main.js"></script>
+<script src="sketch.js"></script>
+
 </html>
