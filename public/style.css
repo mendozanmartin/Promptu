@@ -71,6 +71,14 @@ html {
 
 }
 
+.link-title {
+    font-family: 'Avenir Next';
+    font-weight: bold;
+    font-size: 2em;
+    color: #ffffff;
+
+}
+
 
 .body-text {
     font-family: 'Avenir Next';
@@ -116,10 +124,11 @@ html {
     grid-row: 6/10;
     /* display: none; */
     /* background-color: #ffffff; */
-
-
 }
 
+#defaultCanvas0 {
+    visibility: hidden;
+}
 #animal-text {
     grid-column: 4/12;
     grid-row: 10/11;
@@ -174,7 +183,7 @@ html {
 
 #info {
     grid-column: 3/8;
-    grid-row: 9/10;
+    grid-row: 4/5;
     display: grid;
     align-self: end;
     display: none;
@@ -183,7 +192,13 @@ html {
 
 #animal-fact {
     grid-column: 3/13;
-    grid-row: 10/12;
+    grid-row: 5/8;
     /* display: grid; */
     display: none;
+}
+
+#animal-links {
+    display: grid;
+    grid-column: 3/13;
+    grid-row: 11/13;
 }

@@ -57,7 +57,7 @@ io.on('connection', function (socket) {
             console.log(indices[2])
 
         }
-        const url = 'https://c52d94aa.ngrok.io/senddata/' + name + '?id=' + numToSend
+        const url = `https://c52d94aa.ngrok.io/senddata/${name.replace(/ /g, "_")}?id=${numToSend}`
         httpRequest({ url, json: true }, (error, { body }) => {
             console.log(body)
         })

@@ -3,14 +3,14 @@ URL = window.URL || window.webkitURL;
 var gumStream; //stream from getUserMedia() 
 var rec; //Recorder.js object
 var input;
-
+var animal = "";
 var constraints = {
   audio: true,
   video: false
 }
 /* Disable the record button until we get a success or fail from getUserMedia() */
 var socket = io();
-
+var blob = "";
 //new audio context to help us record 
 var recordButton = document.getElementById("mic-ready");
 var micOn = document.getElementById("mic-on");
@@ -18,15 +18,31 @@ var drawingPic = document.getElementById("drawing-pick");
 var animalText = document.getElementById("animal-text");
 var redoIcon = document.getElementById("redo-icon")
 var reloadIcon = document.getElementById("reload-icon");
-var drawingPick = document.getElementById("drawing-pick");
+var newDrawingPick = document.getElementById("defaultCanvas0");
+var info = document.getElementById("info");
+var display = document.getElementById("display")
+var declare = document.getElementById("declare");
+var question = document.getElementById("question");
+var bodyText = document.getElementById("body-text");
+var animalFacts = document.getElementById("animal-fact")
+var animalLinks = document.getElementById("animal-links")
 //add events to those 3 buttons 
 recordButton.addEventListener("click", startRecording);
 micOn.addEventListener("click", stopRecording);
 redoIcon.addEventListener("click", refreshPage);
 //reloadIcon.addEventListener("click", )
 
+
+
 function refreshPage() {
-  //reload
+  console.log("this executed")
+  socket.emit('sendVideo', {
+    blob: blob
+  });
+}
+
+function retry() {
+  location.reload();
 }
 
 function startRecording() {
@@ -58,11 +74,9 @@ function startRecording() {
 function stopRecording() {
   console.log("stopButton clicked");
   //disable the stop button, enable the record too allow for new recordings 
-  window.setTimeout(function(){ 
-    recordButton.display = 'none'
-    drawingPick.display = 'grid'
-   }, 5000);
-
+    recordButton.display = 'none';
+    //newDrawingPick.style.visibility = 'visibile';
+    document.getElementById("defaultCanvas0").style.visibility = 'visible'
   
   //reset button just in case the recording is stopped while paused 
   //tell the recorder to stop the recording 
@@ -96,10 +110,12 @@ function createDownloadLink(blob) {
     blob: blob
   });
 
-  socket.on('result', (data)=> {
-    animalText.innerHTML = data.animal
-    console.log(data.drawing);
-    drawSomething(data.drawing);
-
-  })
+  
 }
+socket.on('result', (data)=> {
+  animal = data.animal
+  animalText.innerHTML = 'pick a ' + data.animal + '!'
+  console.log(data.drawing);
+  drawSomething(data.drawing);
+
+})

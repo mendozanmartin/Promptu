@@ -41,10 +41,11 @@
     <!--ANIMAL NAME GOES HERE-->
   </div>
 
-  <div id="redo-icon" class="body-text"> <img src="img/redo.png">
-    <div class="padded-text">Try Again</div>
+  <div id="redo-icon" class="body-text"> <img src="img/redo.png" onclick="retry()">
+    <div class="padded-text" >Try Again</div>
   </div>
-  <div id="reload-icon" class="body-text"> <img src="img/reload.png">
+
+  <div id="reload-icon" class="body-text"> <img src="img/reload.png" onclick = "refreshPage()">
     <div class="padded-text">Refresh</div>
   </div>
 
@@ -56,7 +57,9 @@
 
   <div id="info" class="body-text">Did you know...</div>
   <!--DISPLAY STRING FROM FACT HERE -->
-  <div id="animal-fact" class="medium-title">Sea Turtle birth rates are affected by climate change.</div>
+  <div id="animal-fact" class="small-title">Sea Turtle birth rates are affected by climate change.</div>
+
+  <div id="animal-links" class="link-title"></div>
 
 
 
@@ -71,6 +74,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+<script src="facts.js"></script>
 <script src="main.js"></script>
 <link rel="stylesheet" href="style.css">
 <script src="sketch.js"></script>
