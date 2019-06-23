@@ -67,8 +67,8 @@ function stopRecording() {
 function createDownloadLink(blob) {
   var url = URL.createObjectURL(blob);
   var au = document.createElement('audio');
-  var li = document.createElement('li');
   var link = document.createElement('a');
+  var speechTranscription = document.getElementById('speechTranscription')
   //add controls to the <audio> element 
   au.controls = true;
   au.src = url;
@@ -84,8 +84,8 @@ function createDownloadLink(blob) {
   });
 
   socket.on('result', (data)=> {
-  //  li.appendChild(data.transcription);
-  //   speechTranscription.appendChild(li);
+    speechTranscription.innerHTML = data.transcription;
+
     console.log(data.transcription)
 
   })

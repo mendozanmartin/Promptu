@@ -26,15 +26,12 @@ io.on('connection', function (socket) {
     });
 
     socket.on('sendVideo', (data) => {
-        console.log(data.blob)
         speechToText(data.blob, (result)=> {
            console.log(result.queryText)
             socket.emit('result', {
                 transcription: result.queryText
             })
         }).catch(console.error)
-
-
     });
     //end of socket connection
 });
@@ -117,12 +114,17 @@ async function getAnimal(text, callback) {
     // Send request and log result
     const responses = await sessionClient.detectIntent(request);
     console.log('Detected intent');
+
     const result = responses[0].queryResult;
     console.log(`  Query: ${result.queryText}`);
     console.log(`  Response: ${result.fulfillmentText}`);
     if (result.intent) {
         console.log(`  Intent: ${result.intent.displayName}`);
-        console.log("  Animal: " + result.parameters.fields.animal.stringValue);
+        try {
+
+        } catch(err) {
+            console.log("  Animal: " + result.parameters.fields.animal.stringValue);
+        }
     } else {
         console.log(`  No intent matched.`);
     }
