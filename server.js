@@ -8,6 +8,7 @@ var httpRequest = require('request')
 var drawing = [];
 var name = ""
 var indices = [];
+var animal = "";
 
 //var serveStatic = require('serve-static');
 
@@ -30,12 +31,13 @@ io.on('connection', function (socket) {
     });
 
     socket.on('sendVideo', (data) => {
-        speechToText(data.blob, (result, drawingArray) => {
+        speechToText(data.blob, (result, drawingArray, animal) => {
             console.log(result.queryText)
             console.log(drawingArray)
             socket.emit('result', {
                 transcription: result.queryText,
-                drawing: drawingArray
+                drawing: drawingArray,
+                animal: animal
             })
         }).catch(console.error)
     });
@@ -82,9 +84,11 @@ var alternative = "";
 
 
 async function speechToText(blob, callback) {
-    var drawing = [];
-    var name = ""
-    var indices = [];
+    drawing = [];
+    name = ""
+    indices = [];
+    animal = "";
+    
 
     const encoding = 'MP3';
     // const sampleRateHertz = 48000;
@@ -150,14 +154,14 @@ async function getAnimal(text, callback) {
     console.log(`  Query: ${result.queryText}`);
     console.log(`  Response: ${result.fulfillmentText}`);
     if (result.intent) {
-        console.log(result.parameters.fields.animal.stringValue)
+        animal = result.parameters.fields.animal.stringValue;
         const url = `https://c52d94aa.ngrok.io/${result.parameters.fields.animal.stringValue.replace(/ /g, "_")}`;
         httpRequest({ url, json: true }, (error, { body }) => {
             console.log(body)
             name = body.drawingOne.word;
             indices = [body.indices[0], body.indices[1], body.indices[2]]
             drawing = [body.drawingOne.drawing, body.drawingTwo.drawing, body.drawingThree.drawing]
-            callback(result, drawing);
+            callback(result, drawing, animal);
         })
 
         try {

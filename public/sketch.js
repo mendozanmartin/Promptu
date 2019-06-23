@@ -1,11 +1,12 @@
-const screenWidth = screen.width;
-const screenHeight = screen.height;
-const circleDiameter = screenWidth / 4;
+const screenWidth = screen.width*3;
+const screenHeight = screen.height*3;
+const circleDiameter = screenWidth/4;
+console.log(circleDiameter)
 
 function setup() {
     var myCanvas = createCanvas(screenWidth, 255);
-    myCanvas.parent("myCanvas")
-    drawCircles()
+    myCanvas.parent("drawing-pick")
+    drawCircles();
 }
 
 function drawCircles() {
@@ -29,8 +30,8 @@ function drawSomething(drawing) {
             strokeWeight(3);
             beginShape()
             for (let i = 0; i < path[0].length; i++) {
-                let x = (path[0][i] * 0.3) + xPos[j];
-                let y = (path[1][i] * 0.3) + yPos[j];
+                let x = (path[0][i] * 0.6) + xPos[j];
+                let y = (path[1][i] * 0.6) + yPos[j];
                 vertex(x, y);
             }
             endShape();
@@ -38,19 +39,6 @@ function drawSomething(drawing) {
         j++;
     });
 }
-
-// function touchStarted() {
-
-//     if (mouseX > 0 && mouseX < screenWidth/3 && mouseY < 170 && mouseY > 110) {
-//         socket.emit('sendDrawing', {
-//             index: 1
-//         });
-//         console.log("okayy boi");
-//     }
-
-//     console.log("mouseX:  " + mouseX + " || " + "mouseY: " + mouseY)
-//     return false;
-// }
 
 function pickPicture(number) {
     console.log(number)

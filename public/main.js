@@ -13,11 +13,21 @@ var socket = io();
 
 //new audio context to help us record 
 var recordButton = document.getElementById("mic-ready");
-var micOn = document.getElementById("mic-on")
+var micOn = document.getElementById("mic-on");
+var drawingPic = document.getElementById("drawing-pick");
+var animalText = document.getElementById("animal-text");
+var redoIcon = document.getElementById("redo-icon")
+var reloadIcon = document.getElementById("reload-icon");
+var drawingPick = document.getElementById("drawing-pick");
 //add events to those 3 buttons 
 recordButton.addEventListener("click", startRecording);
 micOn.addEventListener("click", stopRecording);
+redoIcon.addEventListener("click", refreshPage);
+//reloadIcon.addEventListener("click", )
 
+function refreshPage() {
+  //reload
+}
 
 function startRecording() {
   // shim for AudioContext when it's not avb. 
@@ -48,13 +58,23 @@ function startRecording() {
 function stopRecording() {
   console.log("stopButton clicked");
   //disable the stop button, enable the record too allow for new recordings 
-  recordButton.disabled = false;
+  window.setTimeout(function(){ 
+    recordButton.display = 'none'
+    drawingPick.display = 'grid'
+   }, 5000);
+
+  
   //reset button just in case the recording is stopped while paused 
   //tell the recorder to stop the recording 
   rec.stop(); //stop microphone access 
   gumStream.getAudioTracks()[0].stop();
   //create the wav blob and pass it on to createDownloadLink 
+  micOn.style.display = 'none';
+  animalText.style.display = 'grid';
+  redoIcon.style.display = 'grid';
+  reloadIcon.style.display = 'grid';
 
+  
   rec.exportWAV(createDownloadLink);
 }
 
@@ -62,7 +82,6 @@ function createDownloadLink(blob) {
   var url = URL.createObjectURL(blob);
   var au = document.createElement('audio');
   var link = document.createElement('a');
-  var speechTranscription = document.getElementById('speechTranscription')
   //add controls to the <audio> element 
   au.controls = true;
   au.src = url;
@@ -78,7 +97,7 @@ function createDownloadLink(blob) {
   });
 
   socket.on('result', (data)=> {
-    speechTranscription.innerHTML = data.transcription;
+    animalText.innerHTML = data.animal
     console.log(data.drawing);
     drawSomething(data.drawing);
 

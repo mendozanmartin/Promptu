@@ -14,25 +14,25 @@ html {
 .firstPicture {
     background-color: transparent;
     position: absolute;
-    width: 80px;
-    height: 80px;
-    top: 55vw;
+    width: 200px;
+    height: 200px;
+    top: 65vw;
     left: 10vw;
 }
 .secondPicture {
     background-color: transparent;
     position: absolute;
-    width: 80px;
-    height: 80px;
-    top: 45vw;
+    width: 200px;
+    height: 200px;
+    top: 55vw;
     left: 40vw;
 }
 .thirdPicture {
     background-color: transparent;
     position: absolute;
-    width: 80px;
-    height: 80px;
-    top: 55vw;
+    width: 200px;
+    height: 200px;
+    top: 65vw;
     left: 70vw;
 }
 
@@ -114,8 +114,8 @@ html {
 
     grid-column: 1/15;
     grid-row: 6/10;
-    display: none;
-    background-color: #ffffff;
+    /* display: none; */
+    /* background-color: #ffffff; */
 
 
 }

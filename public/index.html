@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css">
+
+  <!-- <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet"> -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css">
   <title>Speak out to draw attention to social issues</title>
 </head>
 <html lang="en-us">
@@ -13,13 +12,13 @@
 <!-- <button class = "btn btn-info" id = "recordButton">Record your voice</button>
       <button class = "btn btn-primary"  id = "pauseButton">Pause</button>
       <button class = "btn btn-danger"  id = "stopButton">Stop and Send</button>
-      <h2 id="speechTranscription"></h2>
+      <h2 id="speechTranscription"></h2>-->
 
       <div class = " firstPicture" onclick="pickPicture(0)"></div>
       <div class = " secondPicture" onclick="pickPicture(1)"></div>
-      <div class = " thirdPicture" onclick="pickPicture(2)"></div>
+      <div class = " thirdPicture" onclick="pickPicture(2)"></div> 
     <div id = "myCanvas">
-    </div> -->
+    </div> 
 
 <div id="site-container">
 
@@ -28,17 +27,17 @@
     <div class="large-title" id="question">Favourite Animal?</div>
   </div>
   <!--Mic Is Ready To Be Pressed - WIREFRAME SCREEN 1-->
-  <div id="mic-ready" class="medium-title"> <img src="img/Ready.png"> Tap To Start
+  <div id="mic-ready" class="medium-title"> <img src="img/Ready.png" class = "animated pulse infinite slow"> Tap To Start
   </div>
   <!--Mic has been pressed and is listening - WIREFRAME SCREEN 2-->
-  <div id="mic-on" class="medium-title"><img src="img/listening.png"> Listening...<br><p style="font-size: 40px;">Press again when done</p>
+  <div id="mic-on" class="medium-title "><img src="img/listening.png" class = "animated infinite flash slower"> Listening...<br><p style="font-size: 40px;">Press again when done</p>
   </div>
   <!--Mic has heard a prompt and asks user to pick an image - WIREFRAME SCREEN 3-->
   <div id="drawing-pick">
     <!--DRAW CANVAS HERE-->
   </div>
 
-  <div id="animal-text" class="large-title">Sea Turtles
+  <div id="animal-text" class="large-title">
     <!--ANIMAL NAME GOES HERE-->
   </div>
 
@@ -73,6 +72,7 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
 <script src="main.js"></script>
+<link rel="stylesheet" href="style.css">
 <script src="sketch.js"></script>
 
 </html>
