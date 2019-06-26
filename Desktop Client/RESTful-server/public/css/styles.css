@@ -1,0 +1,28 @@
+html {
+  background: #fcdb37
+}
+
+.placeholderText {
+  margin-top: 175px;
+  width: 100%;
+  text-align: center;
+}
+#beginButton {
+  padding: 20px;
+  background: white;
+  color: black;
+  font-size: 24px;
+  width: 240px;
+  border: 1px solid black;
+  display: block;
+  margin: 100px auto -50px;
+}
+#beginButton:hover {
+  background: black;
+  transition: 0.25s;
+  color: white;
+}
+#myInputField {
+  padding: 20px;
+  margin: 10px;
+}
