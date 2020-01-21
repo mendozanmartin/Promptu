@@ -26,11 +26,11 @@ People who pass by a Promptu billboard (mural) will be invited to visit a websit
 2. On the desktop client, click 'Begin'.
 3. Now on your phone, click the 'record' button and say your favorite animal (you can say however you would like).
 4. To get a statistic and link on your phone, pick from the following animals (figure out which animals can be drawn):
-  * Lion
-  * Rhino
-  * Sea turtle
-  * Shark
-  * Tiger
+    * Lion
+    * Rhino
+    * Sea turtle
+    * Shark
+    * Tiger
 5. Pick one of the drawn animals and you should see it appear on the desktop (and be amazed).
 
 <b>Mobile Client</b>
